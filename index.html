@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* background: url(12.jpg); */
+            background: #3ea2ff;
+        }
+        .main-box {
+            width: 450px;
+            height: 550px;
+            background: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            position: relative;
+            color: #000;
+            overflow: hidden;
+        }
+        .main-box .heading {
+            text-align: center;
+            font-size: 32px;
+            color: #3eff48;
+        }
+        .main-box .question-container {
+            padding: 20px 0;
+        }
+        .question-container .question {
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        .answer-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        .answer-box .answers {
+            width: 100%;
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+            background: transparent;
+            border: 2px solid rgba(121, 118, 118, 0.849);
+            margin-bottom: 10px;
+            padding: 10px 10px;
+            border-radius: 5px;
+            text-align: left;
+            cursor: pointer;
+            transition: all .4s ease;
+        }
+        .answer-box .answers.correct {
+            background: #3eff4883;
+            border: 2px solid #3eff48;
+        }
+        .answer-box .answers.incorrect {
+            background: #f3481493;
+            border: 2px solid #fd460e;
+        }
+        .answer-box .answers:hover {
+            transform: translateY(-5px);
+            /* background: #3eff4883; */
+        }
+        .bottom-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            padding: 0 20px;
+        }
+        .bottom-box .question-remaining {
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .bottom-box .next-btn {
+            width: 90px;
+            padding: 5px;
+            border: 2px solid #3eff48;
+            background: transparent;
+            font-size: 17px;
+            font-weight: 600;
+            transition: all .4s ease;
+        }
+        .bottom-box .next-btn:hover {
+            background: #3eff48;
+            cursor: pointer;
+        }
+        .score-tag {
+            position: absolute;
+            top: 27px;
+            left: 20px;
+            font-size: 22px;
+        }
+        .Quiz-finished {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: inherit;
+            transition: all .5s ease;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .Quiz-finished .score-box {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .score-box h1 {
+            font-size: 65px;
+        }
+        .score-box .progress-box {
+            width: 300px;
+            height: 4px;
+            box-shadow: inset -3px -3px 9px #ffffff73,
+                        inset 2px 2px 8px rgba(121, 118, 118, 0.849);
+            margin: 30px 0;
+            border-radius: 5px;
+            position: relative;
+        }
+        .score-box .progress-box .progress {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: #3ea2ff;
+            display: flex;
+            transition: all .4s ease;
+        }
+        .score-box .progress .percent {
+            position: absolute;
+            top: -25px;
+            right: -18px;
+            padding: 0 5px;
+            border: 2px solid #3ea2ff;
+        }
+        .Quiz-finished .restart-quiz{
+            width: 130px;
+            font-size: 18px;
+            padding: 5px 10px;
+            border: 2px solid #3ea2ff;
+            background: transparent;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .4s ease;
+        }
+        .Quiz-finished .restart-quiz:hover {
+            background: #3ea2ff;
+            color: #fff;
+        }
+        .Quiz-finished.active {
+            top: 0;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main-box">
+        <h3 class="score-tag"><b>Score : </b>0</h3>
+        <h2 class="heading">    
+            Quiz App
+        </h2>
+
+        <div class="question-container">
+            <p class="question"><b class="q-no">1. </b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae quo adipisci nesciunt enim suscipit blanditiis?</p>
+        </div>
+
+        <div class="answer-box">
+            <button class="answers"><b>1. </b>CSs</button>
+            <button class="answers"><b>2. </b>Js</button>
+            <button class="answers"><b>3. </b>Python</button>
+            <button class="answers"><b>4. </b>Java</button>
+        </div>
+
+        <div class="bottom-box">
+            <div class="question-remaining">
+                3/4 <span style="color: #3eff48;">Questions</span>
+            </div>
+            <button class="next-btn">Next</button>
+        </div>
+
+        <div class="Quiz-finished">
+            <div class="score-box">
+                <h1 class="score">15</h1>
+                <div class="progress-box">
+                    <div class="progress">
+                        <span class="percent">18%</span>
+                    </div>
+                </div>
+                <button class="restart-quiz">Resart Quiz</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
